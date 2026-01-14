@@ -12,12 +12,13 @@ const httpServer = createServer((req, res) => {
 const io = new Server(httpServer,{
     cors: {
         origin: process.env.FRONTEND_URL,
-        methods: ['GET'],
+        methods: ['GET',"POST"],
         credentials: true
     }
 })
 io.use(async (socket, next) => {
     const header = socket.handshake.headers.cookie
+    console.log("Cookies received:", header)
     if (!header) {
         return next(new Error("Authentication error: No cookies found"))
     }
