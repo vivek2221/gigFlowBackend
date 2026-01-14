@@ -17,8 +17,8 @@ server.put('/', async (req, res) => {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: `${process.env.userEmail}`,
-        pass: process.env.pass
+        user: `${process.env.USEREMAIL}`,
+        pass: process.env.PASS
       }
     })
 
